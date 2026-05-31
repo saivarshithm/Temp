@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EESA NITK — Electrical & Electronics Students Association</title>
+    <meta name="description" content="EESA NITK is a vibrant student-led body under the Department of Electrical & Electronics Engineering, NITK Surathkal, fostering innovation, leadership, and technical excellence.">
+    <meta name="keywords" content="EESA, NITK, electrical engineering, electronics, students, association, Surathkal">
+    <meta name="author" content="EESA NITK">
+    <meta property="og:title" content="EESA NITK — Electrical & Electronics Students Association">
+    <meta property="og:description" content="Platform for EESA students to share notes, projects, events, and career opportunities.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ═══ Navigation ═══ -->
+    <nav class="nav" id="navbar">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-brand">
+                <!-- Lightning bolt logo -->
+                <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="36" height="36" rx="10" fill="currentColor" fill-opacity="0.12"/>
+                    <path d="M20.5 7L11 20h6l-1.5 9L26 16h-6l1.5-9z" fill="currentColor" stroke="currentColor" stroke-width="0.5" stroke-linejoin="round"/>
+                </svg>
+                <span class="nav-brand-text">EESA <span>NITK</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="alumni.html" class="nav-link">Alumni</a>
+                <a href="about.html" class="nav-link">About</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="nav-mobile" id="navMobile">
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="events.html" class="nav-link">Events</a>
+            <a href="library.html" class="nav-link">Library</a>
+            <a href="projects.html" class="nav-link">Projects</a>
+            <a href="gallery.html" class="nav-link">Gallery</a>
+            <a href="alumni.html" class="nav-link">Alumni</a>
+            <a href="about.html" class="nav-link">About</a>
+        </div>
+    </nav>
+
+    <!-- ═══ Hero Section ═══ -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-label">
+                    <span class="dot"></span>
+                    NITK Surathkal
+                </div>
+                <h1>
+                    Electrical &amp; Electronics<br>
+                    <span class="highlight">Students Association</span>
+                </h1>
+                <p class="hero-desc">
+                    EESA is a vibrant student-led body under the Department of Electrical &amp; Electronics Engineering, NITK Surathkal — fostering innovation, leadership, and technical excellence through dynamic academic and co-curricular initiatives.
+                </p>
+                <div class="hero-actions">
+                    <a href="events.html" class="btn-primary">
+                        Explore Events
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    </a>
+                    <a href="about.html" class="btn-secondary">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-graphic">
+                    <div class="hero-graphic-ring"></div>
+                    <div class="hero-graphic-ring"></div>
+                    <div class="hero-graphic-ring"></div>
+                    <div class="hero-graphic-center">
+                        <!-- Large lightning bolt icon -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                    <!-- Floating stat cards -->
+                    <div class="hero-stat">
+                        <div class="hero-stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <div class="hero-stat-info">
+                            <div class="stat-value">200+</div>
+                            <div class="stat-label">Members</div>
+                        </div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        </div>
+                        <div class="hero-stat-info">
+                            <div class="stat-value">50+</div>
+                            <div class="stat-label">Events</div>
+                        </div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <div class="hero-stat-info">
+                            <div class="stat-value">30+</div>
+                            <div class="stat-label">Projects</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="hero-scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ═══ Featured Events Preview ═══ -->
+    <section class="section-padding" id="featured-events">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-badge">Events</span>
+                <h2 class="section-title">What's <span>Happening</span></h2>
+                <p class="section-desc">Stay updated with our latest events, workshops, and tech fests. Explore what's happening and how you can be part of it.</p>
+            </div>
+            <div class="events-grid" id="events-grid">
+                <!-- Dynamic events loaded from Supabase will be injected here -->
+            </div>
+            <div class="section-cta reveal reveal-delay-4">
+                <a href="events.html" class="btn-secondary mt-40">
+                    View All Events
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Featured Projects Preview ═══ -->
+    <section class="section-padding bg-alt" id="featured-projects">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-badge">Projects</span>
+                <h2 class="section-title">Student <span>Innovations</span></h2>
+                <p class="section-desc">Discover innovative projects by EEE students — spanning hardware, software, and interdisciplinary ideas. Get inspired, get building.</p>
+            </div>
+            <div class="projects-grid" id="projects-grid">
+                <!-- Dynamic projects loaded from Supabase will be injected here -->
+            </div>
+            <div class="section-cta reveal reveal-delay-4">
+                <a href="projects.html" class="btn-secondary mt-40">
+                    View All Projects
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Footer ═══ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-brand-name">
+                        <svg viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="10" fill="currentColor" fill-opacity="0.12"/><path d="M20.5 7L11 20h6l-1.5 9L26 16h-6l1.5-9z" fill="currentColor"/></svg>
+                        <h3>EESA NITK</h3>
+                    </div>
+                    <p>Electrical &amp; Electronics Students Association, NITK Surathkal. Empowering students through technical excellence and innovation since inception.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html" class="footer-link">Home</a>
+                        <a href="events.html" class="footer-link">Events</a>
+                        <a href="library.html" class="footer-link">Library</a>
+                        <a href="projects.html" class="footer-link">Projects</a>
+                        <a href="gallery.html" class="footer-link">Gallery</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Explore</h4>
+                    <div class="footer-links">
+                        <a href="alumni.html" class="footer-link">Alumni Network</a>
+                        <a href="about.html" class="footer-link">About Us</a>
+                        <a href="login.html" class="footer-link">Admin Login</a>
+                        <a href="#" class="footer-link">Resources</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Connect</h4>
+                    <div class="footer-social">
+                        <a href="#" class="footer-social-link" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                        </a>
+                        <a href="#" class="footer-social-link" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                        <a href="#" class="footer-social-link" aria-label="GitHub">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                        </a>
+                        <a href="#" class="footer-social-link" aria-label="Twitter / X">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+                        </a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+                        eesa.nitk@gmail.com
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        NITK Surathkal, Karnataka
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 EESA NITK. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

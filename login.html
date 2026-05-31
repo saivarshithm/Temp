@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login — EESA NITK</title>
+    <meta name="description" content="Administrator portal for the EESA NITK website.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .login-section {
+            min-height: calc(100vh - 80px - 340px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            position: relative;
+            background: var(--bg-alt);
+        }
+        
+        .login-container {
+            width: 100%;
+            max-width: 420px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+        }
+        
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--teal), var(--teal-light));
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-header svg {
+            width: 48px;
+            height: 48px;
+            color: var(--teal);
+            margin-bottom: 16px;
+        }
+
+        .login-header h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .login-header p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-input {
+            width: 100%;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 12px 16px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--teal);
+            box-shadow: 0 0 0 2px var(--teal-xlight);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--teal);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius);
+            padding: 12px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+            font-family: inherit;
+        }
+
+        .btn-submit:hover {
+            background: var(--teal-light);
+            box-shadow: var(--shadow-teal);
+        }
+
+        .login-error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            color: #f87171;
+            padding: 12px;
+            border-radius: var(--radius);
+            font-size: 0.78rem;
+            margin-bottom: 20px;
+            display: none;
+            text-align: center;
+        }
+
+        .login-success {
+            background: rgba(20, 184, 166, 0.1);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+            color: var(--teal-light);
+            padding: 12px;
+            border-radius: var(--radius);
+            font-size: 0.78rem;
+            margin-bottom: 20px;
+            display: none;
+            text-align: center;
+        }
+
+        #registerForm {
+            display: none;
+        }
+
+        .form-input option {
+            background-color: var(--bg);
+            color: var(--text-primary);
+        }
+
+        .login-tabs {
+            display: flex;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .login-tab {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            border-bottom: 2px solid transparent;
+        }
+        
+        .login-tab.active {
+            color: var(--teal);
+            border-bottom-color: var(--teal);
+        }
+
+        .login-tab:hover {
+            color: var(--text-primary);
+        }
+
+        .login-info-box {
+            background: rgba(20, 184, 166, 0.05);
+            border: 1px solid var(--border);
+            padding: 12px;
+            border-radius: var(--radius);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.4;
+            text-align: left;
+        }
+
+        .login-info-box strong {
+            color: var(--teal-light);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ Navigation ═══ -->
+    <nav class="nav" id="navbar">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-brand">
+                <svg viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="10" fill="currentColor" fill-opacity="0.12"/><path d="M20.5 7L11 20h6l-1.5 9L26 16h-6l1.5-9z" fill="currentColor" stroke="currentColor" stroke-width="0.5" stroke-linejoin="round"/></svg>
+                <span class="nav-brand-text">EESA <span>NITK</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="alumni.html" class="nav-link">Alumni</a>
+                <a href="about.html" class="nav-link">About</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        </div>
+        <div class="nav-mobile" id="navMobile">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="events.html" class="nav-link">Events</a>
+            <a href="library.html" class="nav-link">Library</a>
+            <a href="projects.html" class="nav-link">Projects</a>
+            <a href="gallery.html" class="nav-link">Gallery</a>
+            <a href="alumni.html" class="nav-link">Alumni</a>
+            <a href="about.html" class="nav-link">About</a>
+        </div>
+    </nav>
+
+    <!-- ═══ Login Card Section ═══ -->
+    <section class="login-section">
+        <div class="login-container">
+            <div class="login-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    <path d="m9 11 2 2 4-4"/>
+                </svg>
+                <h2>Portal Access</h2>
+                <p>Access your EESA administrator or alumni account</p>
+            </div>
+            
+            <div class="login-tabs">
+                <div class="login-tab active" id="tabSignIn">Sign In</div>
+                <div class="login-tab" id="tabRegister">Register</div>
+            </div>
+
+            <div class="login-info-box" id="infoBox">
+                Enter <strong>admin@eesanitk.in</strong> to access super admin features, or your registered alumni email to edit your profile.
+            </div>
+
+            <div class="login-error" id="loginError">Invalid credentials. Please try again.</div>
+            <div class="login-success" id="loginSuccess">Registration successful! You can now sign in.</div>
+            
+            <!-- Sign In Form -->
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label" for="email">Email Address</label>
+                    <input class="form-input" type="email" id="email" required placeholder="name@domain.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <input class="form-input" type="password" id="password" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn-submit" id="btnSubmit">Sign In</button>
+            </form>
+
+            <!-- Register Form -->
+            <form id="registerForm">
+                <div class="form-group">
+                    <label class="form-label" for="regEmail">Email Address</label>
+                    <input class="form-input" type="email" id="regEmail" required placeholder="name@domain.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="regRole">Register As</label>
+                    <select class="form-input" id="regRole" required>
+                        <option value="student">Student / General User</option>
+                        <option value="alumni">Alumni</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="regPassword">Password</label>
+                    <input class="form-input" type="password" id="regPassword" required placeholder="••••••••">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="regConfirmPassword">Confirm Password</label>
+                    <input class="form-input" type="password" id="regConfirmPassword" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn-submit" id="btnRegSubmit">Create Account</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ═══ Footer ═══ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-brand-name">
+                        <svg viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="10" fill="currentColor" fill-opacity="0.12"/><path d="M20.5 7L11 20h6l-1.5 9L26 16h-6l1.5-9z" fill="currentColor"/></svg>
+                        <h3>EESA NITK</h3>
+                    </div>
+                    <p>Electrical &amp; Electronics Students Association, NITK Surathkal. Empowering students through technical excellence and innovation.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html" class="footer-link">Home</a>
+                        <a href="events.html" class="footer-link">Events</a>
+                        <a href="library.html" class="footer-link">Library</a>
+                        <a href="projects.html" class="footer-link">Projects</a>
+                        <a href="gallery.html" class="footer-link">Gallery</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Explore</h4>
+                    <div class="footer-links">
+                        <a href="alumni.html" class="footer-link">Alumni Network</a>
+                        <a href="about.html" class="footer-link">About Us</a>
+                        <a href="login.html" class="footer-link">Admin Login</a>
+                        <a href="#" class="footer-link">Resources</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Connect</h4>
+                    <div class="footer-social">
+                        <a href="#" class="footer-social-link" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+                        <a href="#" class="footer-social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+                        <a href="#" class="footer-social-link" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+                        eesa.nitk@gmail.com
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        NITK Surathkal, Karnataka
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 EESA NITK. All rights reserved.</p>
+                <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Supabase Client CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const DEFAULT_ALUMNI = [
+                { id: "a1", name: "Saivarshith M.", role: "Software Engineering Lead", company: "Google", batch: "Class of 2020", initials: "SM", experience: "Leading developers at Google working on Cloud infrastructure and virtualization. Enjoys mentoring juniors and guiding technical workshops.", linkedin_url: "https://linkedin.com", github_url: "https://github.com/saivarshithm", email: "saivarshith@google.com" },
+                { id: "a2", name: "Aditi Rao", role: "Power Systems Consultant", company: "Tesla", batch: "Class of 2018", initials: "AR", experience: "Consulting on grid integration of high-voltage battery storage systems and charging stations at Tesla. Specializes in renewable power systems.", linkedin_url: "https://linkedin.com", email: "aditi.rao@tesla.com" },
+                { id: "a3", name: "Dr. Rohan Sharma", role: "Assistant Professor (EE)", company: "Stanford University", batch: "Class of 2014", initials: "RS", experience: "Researching modern power semiconductors and smart grid integration. Published 20+ papers in IEEE transactions.", linkedin_url: "https://linkedin.com", github_url: "https://github.com", email: "rohan@stanford.edu" },
+                { id: "a4", name: "Vikram K. Sen", role: "Lead Research Engineer", company: "ABB Research", batch: "Class of 2016", initials: "VS", experience: "Conducting simulations on industrial motors, magnetic couplings, and switchgear technologies. Previously worked at GE Power.", linkedin_url: "https://linkedin.com" },
+                { id: "a5", name: "Divya Nair", role: "Hardware Architect", company: "Intel Corporation", batch: "Class of 2021", initials: "DN", experience: "Designing high-speed digital circuit boards and system-on-chip packaging protocols. Avid hardware hacker and PCB designer.", linkedin_url: "https://linkedin.com", github_url: "https://github.com" },
+                { id: "a6", name: "Siddharth Mehta", role: "Grid Automation Specialist", company: "Siemens Energy", batch: "Class of 2017", initials: "SM", experience: "Configuring supervisory control systems and modern grid routers. Focused on sustainable energy development.", linkedin_url: "https://linkedin.com" },
+                { id: "a7", name: "Pooja Hegde", role: "PhD Scholar (Quantum Computing)", company: "MIT", batch: "Class of 2023", initials: "PH", experience: "Carrying out research on quantum algorithms, solid-state qubits, and cryo-electronics control interfaces.", linkedin_url: "https://linkedin.com", github_url: "https://github.com" },
+                { id: "a8", name: "Karthik Prasad", role: "Director of Engineering", company: "NVIDIA", batch: "Class of 2012", initials: "KP", experience: "Directing the compiler design division for high-performance AI GPU cards. Loves teaching computer architecture.", linkedin_url: "https://linkedin.com", email: "karthik@nvidia.com" }
+            ];
+
+            const supabase = window.supabase ? window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey) : null;
+            
+            if (supabase) {
+                supabase.auth.getSession().then(({ data: { session } }) => {
+                    if (session) {
+                        window.location.href = 'index.html';
+                    }
+                });
+            }
+
+            const tabSignIn = document.getElementById('tabSignIn');
+            const tabRegister = document.getElementById('tabRegister');
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const infoBox = document.getElementById('infoBox');
+            const loginError = document.getElementById('loginError');
+            const loginSuccess = document.getElementById('loginSuccess');
+            const btnSubmit = document.getElementById('btnSubmit');
+            const btnRegSubmit = document.getElementById('btnRegSubmit');
+
+            tabSignIn.addEventListener('click', () => {
+                tabSignIn.classList.add('active');
+                tabRegister.classList.remove('active');
+                loginForm.style.display = 'block';
+                registerForm.style.display = 'none';
+                infoBox.style.display = 'block';
+                loginError.style.display = 'none';
+                loginSuccess.style.display = 'none';
+            });
+
+            tabRegister.addEventListener('click', () => {
+                tabRegister.classList.add('active');
+                tabSignIn.classList.remove('active');
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'block';
+                infoBox.style.display = 'none';
+                loginError.style.display = 'none';
+                loginSuccess.style.display = 'none';
+            });
+
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                loginError.style.display = 'none';
+                loginSuccess.style.display = 'none';
+                btnSubmit.textContent = 'Authenticating...';
+                btnSubmit.disabled = true;
+
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value;
+
+                const isPlaceholder = !SUPABASE_CONFIG.url || SUPABASE_CONFIG.url.includes('YOUR_SUPABASE') || !SUPABASE_CONFIG.anonKey || SUPABASE_CONFIG.anonKey.includes('YOUR_SUPABASE');
+                if (isPlaceholder) {
+                    const emailLower = email.toLowerCase();
+                    if (emailLower === 'admin@eesanitk.in' && password === 'admin') {
+                        localStorage.setItem('eesa_mock_admin', 'true');
+                        localStorage.setItem('eesa_mock_role', 'admin');
+                        localStorage.removeItem('eesa_mock_alumni_email');
+                        localStorage.removeItem('eesa_mock_student_email');
+                        window.location.href = 'index.html';
+                        return;
+                    } else {
+                        // Check local preview mock users
+                        const mockUsers = JSON.parse(localStorage.getItem('eesa_mock_users') || '{}');
+                        const mockRole = mockUsers[emailLower];
+                        if (mockRole) {
+                            localStorage.setItem('eesa_mock_admin', 'false');
+                            localStorage.setItem('eesa_mock_role', mockRole);
+                            if (mockRole === 'alumni') {
+                                localStorage.setItem('eesa_mock_alumni_email', email);
+                                localStorage.removeItem('eesa_mock_student_email');
+                            } else {
+                                localStorage.setItem('eesa_mock_student_email', email);
+                                localStorage.removeItem('eesa_mock_alumni_email');
+                            }
+                            window.location.href = 'index.html';
+                            return;
+                        }
+
+                        // Check local preview mock alumni account
+                        const storedAlums = JSON.parse(localStorage.getItem('eesa_alumni') || '[]');
+                        const alumsList = storedAlums.length ? storedAlums : DEFAULT_ALUMNI;
+                        const foundAlum = alumsList.find(a => a.email && a.email.toLowerCase() === emailLower);
+                        if (foundAlum) {
+                            localStorage.setItem('eesa_mock_admin', 'false');
+                            localStorage.setItem('eesa_mock_role', 'alumni');
+                            localStorage.setItem('eesa_mock_alumni_email', email);
+                            localStorage.removeItem('eesa_mock_student_email');
+                            window.location.href = 'index.html';
+                            return;
+                        } else {
+                            loginError.textContent = 'Offline Preview: Enter "admin@eesanitk.in" (password "admin"), or register an account as student/alumni and login.';
+                            loginError.style.display = 'block';
+                            btnSubmit.textContent = 'Sign In';
+                            btnSubmit.disabled = false;
+                            return;
+                        }
+                    }
+                }
+
+                try {
+                    const { data, error } = await supabase.auth.signInWithPassword({
+                        email: email,
+                        password: password
+                    });
+
+                    if (error) throw error;
+                    window.location.href = 'index.html';
+                } catch (error) {
+                    console.error('Login Error:', error);
+                    loginError.textContent = error.message || 'Authentication failed. Please verify credentials.';
+                    loginError.style.display = 'block';
+                    btnSubmit.textContent = 'Sign In';
+                    btnSubmit.disabled = false;
+                }
+            });
+
+            registerForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                loginError.style.display = 'none';
+                loginSuccess.style.display = 'none';
+                
+                const email = document.getElementById('regEmail').value.trim();
+                const password = document.getElementById('regPassword').value;
+                const confirmPassword = document.getElementById('regConfirmPassword').value;
+                const role = document.getElementById('regRole').value;
+
+                if (password !== confirmPassword) {
+                    loginError.textContent = 'Passwords do not match.';
+                    loginError.style.display = 'block';
+                    return;
+                }
+
+                btnRegSubmit.textContent = 'Creating Account...';
+                btnRegSubmit.disabled = true;
+
+                const isPlaceholder = !SUPABASE_CONFIG.url || SUPABASE_CONFIG.url.includes('YOUR_SUPABASE') || !SUPABASE_CONFIG.anonKey || SUPABASE_CONFIG.anonKey.includes('YOUR_SUPABASE');
+                if (isPlaceholder) {
+                    setTimeout(() => {
+                        loginSuccess.textContent = `Mock Sign Up successful! Registered as ${role}. You can now sign in.`;
+                        loginSuccess.style.display = 'block';
+                        
+                        // Seed new mock user details
+                        const mockUsers = JSON.parse(localStorage.getItem('eesa_mock_users') || '{}');
+                        mockUsers[email.toLowerCase()] = role;
+                        localStorage.setItem('eesa_mock_users', JSON.stringify(mockUsers));
+                        
+                        if (role === 'alumni') {
+                            // Seed new mock alumni card if doesn't exist
+                            const mockEmail = email.toLowerCase();
+                            let storedAlums = JSON.parse(localStorage.getItem('eesa_alumni') || '[]');
+                            if (!storedAlums.length) {
+                                storedAlums = [...DEFAULT_ALUMNI];
+                            }
+                            const existing = storedAlums.find(a => a.email && a.email.toLowerCase() === mockEmail);
+                            if (!existing) {
+                                const newMockAlum = {
+                                    id: 'a_mock_' + Math.random().toString(36).substring(2, 9),
+                                    name: email.split('@')[0].toUpperCase(),
+                                    role: 'Alumni (Edit Me)',
+                                    company: 'Edit Me',
+                                    batch: 'Class of 2026',
+                                    initials: email.substring(0, 2).toUpperCase(),
+                                    experience: 'Edit your profile biography here...',
+                                    email: email,
+                                    linkedin_url: '',
+                                    github_url: '',
+                                    twitter_url: ''
+                                };
+                                storedAlums.push(newMockAlum);
+                                localStorage.setItem('eesa_alumni', JSON.stringify(storedAlums));
+                            }
+                        }
+                        
+                        // Switch to sign in tab
+                        tabSignIn.click();
+                        document.getElementById('email').value = email;
+                        btnRegSubmit.textContent = 'Create Account';
+                        btnRegSubmit.disabled = false;
+                    }, 800);
+                    return;
+                }
+
+                try {
+                    const { data, error } = await supabase.auth.signUp({
+                        email: email,
+                        password: password,
+                        options: {
+                            data: {
+                                role: role
+                            }
+                        }
+                    });
+
+                    if (error) throw error;
+
+                    loginSuccess.textContent = 'Account created! Please check your email for a confirmation link, then sign in here.';
+                    loginSuccess.style.display = 'block';
+                    
+                    tabSignIn.click();
+                    document.getElementById('email').value = email;
+                } catch (error) {
+                    console.error('Registration Error:', error);
+                    loginError.textContent = error.message || 'Registration failed. Please try again.';
+                    loginError.style.display = 'block';
+                } finally {
+                    btnRegSubmit.textContent = 'Create Account';
+                    btnRegSubmit.disabled = false;
+                }
+            });
+        });
+    </script>
+    <!-- Navbar & Mobile Menu interactions -->
+    <script src="script.js"></script>
+</body>
+</html>

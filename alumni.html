@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Network — EESA NITK</title>
+    <meta name="description" content="Meet EESA NITK's alumni network leading innovations in top tech giants, global research labs, and academic institutions worldwide.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ═══ Navigation ═══ -->
+    <nav class="nav" id="navbar">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-brand">
+                <svg viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="10" fill="currentColor" fill-opacity="0.12"/><path d="M20.5 7L11 20h6l-1.5 9L26 16h-6l1.5-9z" fill="currentColor" stroke="currentColor" stroke-width="0.5" stroke-linejoin="round"/></svg>
+                <span class="nav-brand-text">EESA <span>NITK</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="library.html" class="nav-link">Library</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="alumni.html" class="nav-link active">Alumni</a>
+                <a href="about.html" class="nav-link">About</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        </div>
+        <div class="nav-mobile" id="navMobile">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="events.html" class="nav-link">Events</a>
+            <a href="library.html" class="nav-link">Library</a>
+            <a href="projects.html" class="nav-link">Projects</a>
+            <a href="gallery.html" class="nav-link">Gallery</a>
+            <a href="alumni.html" class="nav-link active">Alumni</a>
+            <a href="about.html" class="nav-link">About</a>
+        </div>
+    </nav>
+
+    <!-- ═══ Page Header ═══ -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <span class="section-badge">Alumni</span>
+                <h1 class="section-title">Alumni <span>Network</span></h1>
+                <p class="section-desc">Connect with our illustrious alumni network. EEE graduates from NITK Surathkal lead technical advancements in industry majors, global startups, and premier academic hubs across the globe.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Alumni Grid Section ═══ -->
+    <section class="section-padding pt-50">
+        <div class="container">
+            <h2 class="subsection-title reveal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                Alumni Spotlight
+            </h2>
+            <div class="alumni-grid" id="alumni-grid">
+                <!-- Dynamic alumni cards loaded from Supabase will be injected here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Footer ═══ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-brand-name">
+                        <svg viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="10" fill="currentColor" fill-opacity="0.12"/><path d="M20.5 7L11 20h6l-1.5 9L26 16h-6l1.5-9z" fill="currentColor"/></svg>
+                        <h3>EESA NITK</h3>
+                    </div>
+                    <p>Electrical &amp; Electronics Students Association, NITK Surathkal. Empowering students through technical excellence and innovation.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html" class="footer-link">Home</a>
+                        <a href="events.html" class="footer-link">Events</a>
+                        <a href="library.html" class="footer-link">Library</a>
+                        <a href="projects.html" class="footer-link">Projects</a>
+                        <a href="gallery.html" class="footer-link">Gallery</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Explore</h4>
+                    <div class="footer-links">
+                        <a href="alumni.html" class="footer-link">Alumni Network</a>
+                        <a href="about.html" class="footer-link">About Us</a>
+                        <a href="login.html" class="footer-link">Admin Login</a>
+                        <a href="#" class="footer-link">Resources</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Connect</h4>
+                    <div class="footer-social">
+                        <a href="#" class="footer-social-link" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+                        <a href="#" class="footer-social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+                        <a href="#" class="footer-social-link" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+                        eesa.nitk@gmail.com
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        NITK Surathkal, Karnataka
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 EESA NITK. All rights reserved.</p>
+                <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms</a></div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
